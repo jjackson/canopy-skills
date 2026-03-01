@@ -1,10 +1,10 @@
 ---
-name: pm-supervisor
+name: product-management
 description: Use when acting as a product manager for autonomous development — exploring a codebase, proposing improvements, implementing, and learning from outcomes. Invoked by open claws or humans who want structured PM-style development cycles.
-version: 0.1.0
+version: 0.2.0
 ---
 
-# PM Supervisor — Autonomous Product Development
+# Product Management — Autonomous Product Development
 
 ## Purpose
 
@@ -41,13 +41,78 @@ All project-level data lives in `.claude/pm/` within the current project:
             └── YYYY-MM-DD-<lens>.md
 ```
 
-**First run:** If `.claude/pm/` doesn't exist, bootstrap it:
-1. Read CLAUDE.md + README for orientation
-2. Generate `context.md` with: what it is, who uses it, what matters, tech stack, current state
-3. Create empty `learnings.md`
-4. Ask the user to review and refine `context.md` before proceeding
-
 **Every run:** Read `context.md` and `learnings.md` before doing anything else. These are your memory.
+
+## Bootstrapping: Building context.md
+
+If `.claude/pm/context.md` doesn't exist, build it interactively before doing anything else.
+
+### Step 1: Gather what you can automatically
+
+Read these silently (don't dump them to the user):
+- `CLAUDE.md` and `README.md` for project identity
+- `package.json`, `pyproject.toml`, or equivalent for tech stack
+- `git log --oneline -10` for recent activity
+- Directory structure (top 2 levels) for shape of the codebase
+
+### Step 2: Ask the user focused questions
+
+Ask these **one at a time**, using what you learned in Step 1 to make them specific:
+
+1. **"What does this project do in one sentence?"** — You'll have a guess from the README. Offer it and ask them to correct or confirm. Don't ask if the README already says it clearly.
+
+2. **"Who uses this and how?"** — Ask about the actual users and their workflow. This is the most important question. Push for specifics: job role, how often, what they're trying to accomplish. Don't accept vague answers like "developers" — ask "what kind of developers, doing what?"
+
+3. **"What matters most for this product right now?"** — Give 2-3 options based on what you've seen (e.g., "reliability for existing users" vs "new features to drive adoption" vs "reducing technical debt to move faster"). Let them pick or reframe.
+
+4. **"Anything I should know about how this project works that isn't obvious from the code?"** — Open-ended. Captures tribal knowledge: deployment quirks, known gotchas, political constraints, integration dependencies.
+
+Skip any question where the answer is already clear from the code. Don't ask 4 questions if 2 will do.
+
+### Step 3: Write context.md
+
+Write a short, dense file. Target: **under 40 lines**. Use this structure:
+
+```markdown
+# <Project Name> — Product Context
+
+## What It Is
+One sentence.
+
+## Who Uses It
+- **Primary users**: role, frequency, what they're trying to do
+- **Usage pattern**: how they actually interact with it (ad-hoc, batch, continuous, etc.)
+
+## What Matters Most
+Numbered list, max 3 items. Each one sentence.
+
+## Tech Stack
+Bullet list of key technologies. Only what's relevant to making good proposals.
+
+## Current State
+2-3 sentences: what's working, what's active, what's rough.
+
+## Known Considerations
+Bullet list of non-obvious things: gotchas, constraints, political context, integration dependencies.
+```
+
+### Step 4: Confirm
+
+Show the user the generated `context.md` and ask: "Does this capture your project accurately? Anything to add or fix?" Edit based on their feedback, then save.
+
+Also create an empty `learnings.md`:
+
+```markdown
+# Product Management Learnings
+
+Items closed or rejected during PM cycles. Read this before every scout run to avoid re-proposing.
+
+## Closed Items
+(none yet)
+
+## Preferences
+(none yet)
+```
 
 ## The Loop
 
@@ -176,7 +241,7 @@ Examples: "Claude over-engineers when not told to check existing functionality",
 → Propose a PR to the `canopy-skills` repo:
 
 1. Create branch: `learn/<short-description>`
-2. Edit: `plugins/canopy/skills/pm-supervisor/SKILL.md`
+2. Edit: `plugins/canopy/skills/product-management/SKILL.md`
 3. Make the specific improvement (new lesson, tightened instruction, revised template)
 4. Never delete existing lessons — refine or append
 5. Open PR with:

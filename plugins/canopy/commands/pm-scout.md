@@ -14,7 +14,7 @@ Run a product management scout cycle on the current project.
 
 ## Process
 
-1. Invoke the `pm-supervisor` skill
+1. Invoke the `product-management` skill
 2. Execute Phase 1 (Scout) using the specified lens
 3. Present findings in the Phase 2 (Propose) format
 4. Wait for user disposition on each proposal
