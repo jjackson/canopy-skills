@@ -1,0 +1,20 @@
+{
+  "name": "canopy-skills",
+  "description": "Personal Claude Code skill marketplace — self-improving AI workflows",
+  "owner": {
+    "name": "Jonathan Jackson",
+    "url": "https://github.com/jjackson"
+  },
+  "metadata": {
+    "description": "Self-improving skills for Claude Code. Skills accumulate project-level knowledge and propose universal improvements back to this repo via PRs.",
+    "version": "0.1.0"
+  },
+  "plugins": [
+    {
+      "name": "canopy",
+      "source": "./plugins/canopy",
+      "version": "0.1.0",
+      "description": "Self-improving AI workflow skills"
+    }
+  ]
+}
