@@ -21,6 +21,7 @@ Autonomous product development cycles: explore a codebase, propose improvements,
 
 - **Skill**: `pm-supervisor` — automatically invoked for PM-style development
 - **Command**: `/pm-scout [lens]` — run a scout cycle with a specific exploration lens
+- **Command**: `/pm-status` — show project PM state: last run, lens rotation, backlog, learnings
 - **Agent**: `pm-supervisor` — for open claws and automated supervisors
 
 #### Exploration Lenses

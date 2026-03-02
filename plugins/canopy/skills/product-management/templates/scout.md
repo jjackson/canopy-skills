@@ -5,9 +5,9 @@ Use this template when prompting Claude Code for the scout phase.
 ```
 Explore this project.
 
-Context: [paste from .claude/pm/context.md — the "What Matters Most" section]
+Before starting: Read `.claude/pm/context.md` for project context — especially "What Matters Most".
 
-Previous learnings: [paste from .claude/pm/learnings.md, or "none yet" if first run]
+Before starting: Read `.claude/pm/learnings.md` — do NOT re-propose any closed or rejected items listed there.
 
 Read CLAUDE.md first. Then:
 1. git log --oneline -20 (understand recent momentum)
