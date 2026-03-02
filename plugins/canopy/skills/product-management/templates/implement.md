@@ -1,6 +1,7 @@
 # Implement Prompt Template
 
 Use this template when prompting Claude Code for the implementation phase.
+Delegate to superpowers skills for planning, TDD, and branch management — don't reinvent those workflows.
 
 ```
 Implement: {title}
@@ -21,12 +22,11 @@ Constraints:
 
 Steps:
 1. Create branch: git checkout -b {prefix}/{slug}
-2. Implement the change
-3. Write/update tests
-4. Run: {test_command}
-5. Run /simplify to clean up code reuse, quality, and efficiency issues
-6. If validation fails, fix and re-run. If you can't fix after 2 attempts, report what's failing and stop.
-7. Commit with descriptive message
-8. Push and create PR
-9. Report: what changed, test results, anything surprising
+2. Use /test-driven-development to write failing tests first, then implement
+3. Run: {test_command}
+4. Run /simplify to clean up code reuse, quality, and efficiency issues
+5. If validation fails, fix and re-run. If you can't fix after 2 attempts, report what's failing and stop.
+6. Use /verification-before-completion before claiming done
+7. Use /create-pr to commit, push, and open the PR
+8. Report: what changed, test results, anything surprising
 ```
