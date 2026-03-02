@@ -100,7 +100,7 @@ Bullet list of non-obvious things: gotchas, constraints, political context, inte
 
 Show the user the generated `context.md` and ask: "Does this capture your project accurately? Anything to add or fix?" Edit based on their feedback, then save.
 
-Also create an empty `learnings.md`:
+Also create `learnings.md`. If `.claude/pm/runs/` already exists with previous run logs, parse them for any closed/rejected items and pre-populate the "Closed Items" section. Otherwise start empty:
 
 ```markdown
 # Product Management Learnings
@@ -185,6 +185,11 @@ Track all dispositions in the run log. Closed items go into `learnings.md` so th
 - Constraints (don't change X, follow pattern in Y)
 - Verification command
 
+**If validation fails:**
+- Fix the issues and re-run validation
+- If you can't fix after 2 attempts, report what's failing and stop — don't keep thrashing
+- Run `/simplify` after implementation to catch code reuse, quality, and efficiency issues
+
 ### Phase 5: Validate & Ship
 
 - Tests pass, build succeeds, no regressions
@@ -238,10 +243,11 @@ Examples: "don't propose keyboard shortcuts for this project", "this repo uses p
 ### Is this learning universal?
 Examples: "Claude over-engineers when not told to check existing functionality", "always verify current state before proposing additions"
 
-→ Propose a PR to the `canopy-skills` repo:
+→ Propose a PR to `jjackson/canopy-skills` (NOT the current project repo):
 
-1. Create branch: `learn/<short-description>`
-2. Edit: `plugins/canopy/skills/product-management/SKILL.md`
+1. Clone `jjackson/canopy-skills` to a temp directory (or use an existing clone)
+2. Create branch: `learn/<short-description>`
+3. Edit: `plugins/canopy/skills/product-management/SKILL.md`
 3. Make the specific improvement (new lesson, tightened instruction, revised template)
 4. Never delete existing lessons — refine or append
 5. Open PR with:

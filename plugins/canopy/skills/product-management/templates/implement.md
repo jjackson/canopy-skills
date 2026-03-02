@@ -24,7 +24,9 @@ Steps:
 2. Implement the change
 3. Write/update tests
 4. Run: {test_command}
-5. Commit with descriptive message
-6. Push and create PR
-7. Report: what changed, test results, anything surprising
+5. Run /simplify to clean up code reuse, quality, and efficiency issues
+6. If validation fails, fix and re-run. If you can't fix after 2 attempts, report what's failing and stop.
+7. Commit with descriptive message
+8. Push and create PR
+9. Report: what changed, test results, anything surprising
 ```

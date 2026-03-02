@@ -10,7 +10,7 @@ Run a product management scout cycle on the current project.
 
 ## Arguments
 
-- `lens` (optional): The exploration lens to use. One of: user-value, adoption-blockers, integration-depth, trust-reliability, tech-debt. If not specified, rotate from the last lens used (check `.claude/pm/runs/` for the most recent run).
+- `lens` (optional): The exploration lens to use. One of: user-value, adoption-blockers, integration-depth, trust-reliability, tech-debt. If not specified, rotate from the last lens used — determine this by parsing the filename of the most recent file in `.claude/pm/runs/` (format: `YYYY-MM-DD-<lens>.md`). Pick the next lens in the list above. If no runs exist yet, start with `user-value`.
 
 ## Process
 
