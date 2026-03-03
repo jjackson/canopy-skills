@@ -194,6 +194,24 @@ AskUserQuestion({
 
 Track all dispositions in the run log. Closed items go into `learnings.md` so they're never proposed again.
 
+**After dispositions**, ask the user if any additional ideas came up during the review:
+
+```
+AskUserQuestion({
+  questions: [{
+    question: "Did any additional ideas come up that you'd like to add to this cycle?",
+    header: "Your ideas",
+    options: [
+      { label: "No, move on", description: "Proceed with the dispositions above" },
+      { label: "Yes", description: "I have ideas to add — I'll describe them" }
+    ],
+    multiSelect: false
+  }]
+})
+```
+
+If the user has ideas, capture them and apply the same disposition flow (ask Do it / Backlog / Close for each). Log user-originated ideas in the run log with a `[user idea]` tag. This keeps the scout session self-contained — the user doesn't need to break out of the cycle to contribute their own thoughts.
+
 ### Phase 4: Implement
 
 **Key principles:**
