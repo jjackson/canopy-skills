@@ -161,13 +161,36 @@ Supervisor reviews findings and:
 > Why: one sentence on impact
 > Validate: how we'll know it works
 
-### Phase 3: Approve (user decides)
+### Phase 3: Approve (interactive menu)
 
-Each proposal gets one of four dispositions:
+Present proposals using `AskUserQuestion` so the user can give per-item dispositions through a structured menu rather than free-form chat. Each proposal gets its own question with four options:
+
 - **Do it** → move to implement now
 - **Backlog** → good idea, not now
 - **Close** → don't want this, log the reason
 - **Redirect** → re-scope it
+
+Use `AskUserQuestion` with up to 4 questions (one per proposal). Each question should include the proposal title, effort, what/why/validate summary in the question text, and use `header` for a short label (e.g. "Skill Transfer"). The four disposition options above are the choices. The user can also select "Other" to provide custom feedback.
+
+Example:
+```
+AskUserQuestion({
+  questions: [
+    {
+      question: "Proposal 1: Add transfer-skill command (Effort: M)\n\nWhat: ...\nWhy: ...\nValidate: ...\n\nWhat's your disposition?",
+      header: "Skill Transfer",
+      options: [
+        { label: "Do it", description: "Implement this now" },
+        { label: "Backlog", description: "Good idea, not now" },
+        { label: "Close", description: "Don't want this, won't revisit" },
+        { label: "Redirect", description: "Re-scope — I have specific feedback" }
+      ],
+      multiSelect: false
+    },
+    // ... one question per proposal, up to 4
+  ]
+})
+```
 
 Track all dispositions in the run log. Closed items go into `learnings.md` so they're never proposed again.
 
@@ -266,6 +289,7 @@ The PR will be reviewed before merging. This is intentional — unchecked self-m
 5. **Product value > engineering elegance** — proposals should lead with user impact, not code cleanliness.
 6. **Always git pull before exploring** — stale code = stale proposals.
 7. **Feed closed items into future runs** — without this, Claude re-proposes rejected ideas. Always read `learnings.md` first.
+8. **Use structured menus for dispositions** — presenting proposals via `AskUserQuestion` with per-item options gives the user precise control and avoids ambiguous bulk chat responses. Each proposal should be independently dispositioned.
 
 ## Token Efficiency
 
