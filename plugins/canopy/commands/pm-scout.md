@@ -1,7 +1,7 @@
 ---
 description: Run a PM scout cycle on the current project — explore, propose improvements, learn
 argument-hint: [lens]
-allowed-tools: [Read, Glob, Grep, Bash, Agent, Write, Edit]
+allowed-tools: [Read, Glob, Grep, Bash, Agent, Write, Edit, AskUserQuestion]
 ---
 
 # PM Scout
