@@ -194,23 +194,27 @@ AskUserQuestion({
 
 Track all dispositions in the run log. Closed items go into `learnings.md` so they're never proposed again.
 
-**After dispositions**, ask the user if any additional ideas came up during the review:
+**After dispositions**, ask the user what they'd like to do next:
 
 ```
 AskUserQuestion({
   questions: [{
-    question: "Did any additional ideas come up that you'd like to add to this cycle?",
-    header: "Your ideas",
+    question: "Anything else before we move on?",
+    header: "Next step",
     options: [
-      { label: "No, move on", description: "Proceed with the dispositions above" },
-      { label: "Yes", description: "I have ideas to add — I'll describe them" }
+      { label: "Move on", description: "Proceed to implementation / learning" },
+      { label: "Add my own ideas", description: "I have ideas to add to this cycle" },
+      { label: "Review backlog", description: "See backlogged items from previous runs — promote or close them" }
     ],
     multiSelect: false
   }]
 })
 ```
 
-If the user has ideas, capture them and apply the same disposition flow (ask Do it / Backlog / Close for each). Log user-originated ideas in the run log with a `[user idea]` tag. This keeps the scout session self-contained — the user doesn't need to break out of the cycle to contribute their own thoughts.
+- **Add my own ideas**: Capture the user's ideas and apply the same disposition flow (Do it / Backlog / Close). Log user-originated ideas in the run log with a `[user idea]` tag.
+- **Review backlog**: Parse all previous run logs in `.claude/pm/runs/` and collect items marked as "Backlog". Present each backlogged item via `AskUserQuestion` with options: **Promote** (move to "Do it" this cycle), **Keep** (leave in backlog), **Close** (won't do, log reason). This prevents the backlog from becoming a graveyard of forgotten ideas.
+
+This keeps the scout session self-contained — the user doesn't need to break out of the cycle to contribute thoughts or revisit past decisions.
 
 ### Phase 4: Implement
 
