@@ -133,6 +133,8 @@ Items closed or rejected during PM cycles. Read this before every scout run to a
 - **Trust & reliability**: bugs, wrong answers, silent failures, missing error handling
 - **Tech debt**: dead code, flaky tests, missing types, outdated deps
 
+**Custom lenses are first-class.** The list above is the rotation default — use it when no specific lens is requested. But the user can provide a domain-specific lens for any run (e.g., "improved skill framework so we can run focus groups," "new-user onboarding gaps in the dashboard," "hardening the deploy pipeline"). When they do, use their exact phrasing as the lens, name the run log accordingly (`YYYY-MM-DD-<short-slug>.md`), and skip the rotation. Custom lenses don't replace the rotation — the next default-lens run continues where the rotation left off.
+
 **Output format:**
 For each finding, provide:
 - **Title**: one line
