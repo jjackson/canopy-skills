@@ -312,6 +312,7 @@ The PR will be reviewed before merging. This is intentional — unchecked self-m
 6. **Always git pull before exploring** — stale code = stale proposals.
 7. **Feed closed items into future runs** — without this, Claude re-proposes rejected ideas. Always read `learnings.md` first.
 8. **Use structured menus for dispositions** — presenting proposals via `AskUserQuestion` with per-item options gives the user precise control and avoids ambiguous bulk chat responses. Each proposal should be independently dispositioned.
+9. **Framework changes mean variation points, not new components** — when the user asks for a "framework" or "system" improvement that needs to support a new use case (a new IDD type, a new entity, a new workflow shape), the wrong instinct is to add new files/skills/modules per use case. The right instinct is to add **variation points to existing components** — a declared "type" or "archetype" field, plus branches inside the already-existing components that read from it. Adding components per use case forks the framework and creates a maintenance fan-out; parameterizing existing components keeps the change additive and the next new use case becomes a similar additive PR. Default to parameterization; only fork when the use cases are so structurally different that no variation point can bridge them.
 
 ## Token Efficiency
 
