@@ -153,7 +153,7 @@ For each finding, provide:
 Supervisor reviews findings and:
 1. Filters out low-value or risky items
 2. Ranks by: user impact x feasibility x alignment with priorities
-3. Picks top 3 to present
+3. Picks top 3 to present — or up to 4 when proposals are tightly interdependent and shipping fewer would leave half a feature. The 3 default is a soft cap to keep dispositions focused, not a hard limit. If you find yourself debating which of two equally critical proposals to drop, that's a signal to surface both.
 
 **Presentation format:**
 > **Title** (Effort: S/M/L)
